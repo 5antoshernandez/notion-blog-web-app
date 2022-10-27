@@ -1,0 +1,38 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block title %} {% for i in blog.properties.Name.title %} {{i.text.content}} {% endfor %} {% endblock %}
+
+{% block content %}
+    <!-- Card -->
+    <div class="container content-space-t-1">
+      <div class="row">
+        <div class="col">
+            <div class="w-lg-75 mx-lg-auto">
+                <!-- Card -->
+                <div class="card card-bordered p-4 p-md-7 mt-7">
+                  <h1 class="card-title h2"> {% for i in blog.properties.Name.title %} {{i.text.content}} {% endfor %}</h1>
+                  <p class="card-text">{% for i in blog.properties.Description.rich_text %} {{i.text.content}} {% endfor %}</p>
+                  <br />
+                  {% for i in blocks.results %}
+
+                    {% if i.type == 'heading_1' %}
+                        <h2 class="card-title h3">{% for j in i.heading_1.text %} {{ j.text.content }} {% endfor %}</h2>
+                    {% endif %}
+
+                    {% if i.type == 'paragraph' %}
+                        <p class="card-text">{% for j in i.paragraph.text %} {{ j.text.content }} {% endfor %}</h2>
+                    {% endif %}
+
+                  {% endfor %}
+
+                </div>
+                <!-- End Card -->
+              </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- End Card -->
+  </main>
+  <!-- ========== END MAIN CONTENT ========== -->
+{% endblock %}

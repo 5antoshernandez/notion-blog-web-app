@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Title -->
+  <title>Chamber of Satoshi - {% block title %}{% endblock %}</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./favicon.ico">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="{% static 'assets/css/vendor.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap-icons/font/bootstrap-icons.css' %}">
+
+  <!-- CSS Front Template -->
+  <link rel="stylesheet" href="{% static 'assets/css/theme.min.css' %}">
+</head>
+
+<body id="homeSection" class="position-relative">
+  <!-- ========== HEADER ========== -->
+  <header id="header" class="navbar navbar-expand-lg navbar-end navbar-absolute-top navbar-light navbar-show-hide"
+          data-hs-header-options='{
+            "fixMoment": 1000,
+            "fixEffect": "slide"
+          }'>
+
+
+    <div class="container">
+      <nav class="js-mega-menu navbar-nav-wrap">
+        <!-- Default Logo -->
+        <a class="navbar-brand" href="{% url 'home' %}" aria-label="Chamber of Satoshi">
+          <img class="navbar-brand-logo" src="{% static 'assets/svg/logos/logo.png' %}" alt="Logo">
+        </a>
+        <!-- End Default Logo -->
+
+
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== END HEADER ========== -->
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="content" role="main">
+    {% block content %}
+    {% endblock %}
+  </main>
+  <!-- ========== END MAIN CONTENT ========== -->
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="container text-center content-space-1">
+    <!-- Logo -->
+    <a class="d-inline-flex align-items-center mb-2" href="{% url 'home' %}" aria-label="Chamber of Satoshi">
+      <img class="brand" src="{% static 'assets/svg/logos/logo.png' %}" alt="Logo">
+    </a>
+    <!-- End Logo -->
+
+    <p class="small text-muted mb-0">2022 © Chamber of Satoshi. All rights reserved.</p>
+  </footer>
+  <!-- ========== END FOOTER ========== -->
+
+
+  <!-- JS Implementing Plugins -->
+  <script src="{% static 'assets/js/vendor.min.js' %}"></script>
+
+  <!-- JS Front -->
+  <script src="{% static 'assets/js/theme.min.js' %}"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    (function() {
+      // INITIALIZATION OF HEADER
+      // =======================================================
+      new HSHeader('#header').init()
+
+
+      // INITIALIZATION OF MEGA MENU
+      // =======================================================
+      new HSMegaMenu('.js-mega-menu', {
+          desktop: {
+            position: 'left'
+          }
+        })
+
+
+      // INITIALIZATION OF SHOW ANIMATIONS
+      // =======================================================
+      new HSShowAnimation('.js-animation-link')
+
+
+      // INITIALIZATION OF BOOTSTRAP VALIDATION
+      // =======================================================
+      HSBsValidation.init('.js-validate', {
+        onSubmit: data => {
+          data.event.preventDefault()
+          alert('Submited')
+        }
+      })
+
+
+      // INITIALIZATION OF BOOTSTRAP DROPDOWN
+      // =======================================================
+      HSBsDropdown.init()
+
+
+      // INITIALIZATION OF GO TO
+      // =======================================================
+      new HSGoTo('.js-go-to')
+
+
+      // INITIALIZATION OF AOS
+      // =======================================================
+      AOS.init({
+        duration: 650,
+        once: true
+      });
+
+
+      // INITIALIZATION OF SCROLLSPY
+      // =======================================================
+      new bootstrap.ScrollSpy(document.body, {
+        target: '#navbarNavDropdownNav'
+      })
+
+      new HSScrollspy('#navbarNavDropdown', {
+        breakpoint: 'lg',
+        scrollOffset: -10
+      })
+
+
+      // INITIALIZATION OF VIDEO PLAYER
+      // =======================================================
+      new HSVideoPlayer('.js-inline-video-player')
+    })()
+  </script>
+</body>
+</html>

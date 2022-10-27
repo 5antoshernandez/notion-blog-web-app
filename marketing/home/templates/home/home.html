@@ -1,0 +1,58 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Blogs {% endblock %}
+
+
+{% block content %}
+
+
+    <!-- Card Grid -->
+    <div class="container content-space-2 content-space-lg-3" id="blogSection">
+        <!-- Heading -->
+        <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5">
+        <h2>Announcements</h2>
+        <p>Get the latest news from Chamber of Satoshi</p>
+        </div>
+        <!-- End Heading -->
+
+        <div class="overflow-hidden">
+        <div class="row gx-lg-7">
+
+            <!-- add blog logic here -->
+            {% for blog in blogs %}      
+            
+            {% if blog.properties.Show.checkbox %}
+            <div class="col-sm-6 col-lg-4 mb-5">
+            <!-- Card -->
+            <a class="card card-flush h-100" href="{% url 'blog_detail' blog.id %}" data-aos="fade-up">
+                <img class="card-img" src="{% for i in blog.properties.Image.rich_text%}{{i.text.content}}{% endfor %}" alt="Image Description">
+                <div class="card-body">
+                <span class="card-subtitle text-body">Read the blog</span>
+                {% for i in blog.properties.Name.title %}
+                <h4 class="card-title text-inherit">{{i.text.content}}</h4>
+                {% endfor %}
+                {% for i in blog.properties.Description.rich_text %}
+                
+                <p class="card-text text-body">{{i.text.content}}</p>
+                {% endfor %}
+                </div>
+            </a>
+            <!-- End Card -->
+            </div>
+            <!-- End Col -->
+            {% endif %}
+            
+            {% endfor %}
+
+
+        </div>
+        <!-- End Row -->
+
+        </div>
+
+    </div>
+    <!-- End Card Grid -->
+
+
+{% endblock %}
